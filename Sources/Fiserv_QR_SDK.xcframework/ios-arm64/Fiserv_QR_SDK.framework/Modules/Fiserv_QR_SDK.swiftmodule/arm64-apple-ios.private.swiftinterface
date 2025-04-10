@@ -1,0 +1,313 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+// swift-module-flags: -target arm64-apple-ios17.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Fiserv_QR_SDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVKit
+import Combine
+@_exported import Fiserv_QR_SDK
+import Foundation
+import Lottie
+import Swift
+import SwiftUI
+import UIKit
+import _AVKit_SwiftUI
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public struct Approval : Swift.Codable {
+  public let walletId: Swift.String?
+  public let paymentWalletId: Swift.String?
+  public let status: Swift.String?
+  public let amount: Swift.String?
+  public let merchantData: Fiserv_QR_SDK.MerchantData?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+
+public struct ResponseHeader : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+
+public struct PaymentMethodsResponse : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ProcessedPaymentMethod : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct CardCompleted : Swift.Codable {
+  public init(cardNumber: Swift.String, expDate: Swift.String, cardHolder: Swift.String, issuerCode: Swift.String, cardType: Swift.String, cvv: Swift.Int?, brandCode: Swift.Int, isSelected: Swift.Bool)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum BrandCode : Swift.Int, Swift.Codable {
+  case idVisaCredit
+  case idMasterCardCredit
+  case idAmexCredit
+  case idCabalCredit
+  case unknown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+
+
+
+@_hasMissingDesignatedInitializers public class ColorSettings {
+  public static func setPrimaryColor(_ color: SwiftUI.Color)
+  @objc deinit
+}
+public struct ModuleColors {
+}
+public struct PaymentMethodsQrRequest : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension Swift.Dictionary {
+  public mutating func add(_ dictionary: [Key : Value])
+}
+public protocol InjectionKey {
+  associatedtype Value
+  static var factoryValue: Self.Value { get }
+  static var singletonValue: Self.Value { get set }
+}
+extension Swift.Encodable {
+  public func toJSONData() -> Foundation.Data?
+}
+public struct ErrorInfo : Swift.Codable {
+  public let code: Swift.String?
+  public let message: Swift.String?
+  public let details: Swift.String?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum EnvironmentFlavor {
+  case production
+  case cat
+  case sit
+  case local
+  public static func == (a: Fiserv_QR_SDK.EnvironmentFlavor, b: Fiserv_QR_SDK.EnvironmentFlavor) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class FiservSDKAPI {
+  public static func setClientId(_ clientId: Swift.String)
+  public static func setWalletId(_ walletId: Swift.String)
+  public static func setApiKey(_ apiKey: Swift.String)
+  public static func setUserDocumentation(duType: Swift.String, duNumber: Swift.String)
+  public static func setEnvironment(_ env: Fiserv_QR_SDK.EnvironmentFlavor)
+  public static func setLocalHost(host: Swift.String, port: Swift.Int? = nil)
+  public static func configSDK(_ config: Fiserv_QR_SDK.SDKMinimumConfiguration, localHostConfig: Fiserv_QR_SDK.LocalHostConfig? = nil)
+  public static func setCustomFonts(primaryFontName: Swift.String = FontManager.mainFont, secondaryFontName: Swift.String = FontManager.secondaryFont)
+  public static func setCustomColors(_ colors: Fiserv_QR_SDK.ModuleColors)
+  public static func configureStringResources(_ stringResources: Fiserv_QR_SDK.ModuleStringResources)
+  public static func getQRButton(paymentCheckoutModel: Fiserv_QR_SDK.PaymentCheckoutModel, paymentResultDelegate: any Fiserv_QR_SDK.PaymentResultDelegate) -> some SwiftUI.View
+  
+  public static func getUIKitQRButton() -> UIKit.UIButton
+  public static func getQRPaymentFlowScreen(paymentCheckoutModel: Fiserv_QR_SDK.PaymentCheckoutModel, paymentResultDelegate: any Fiserv_QR_SDK.PaymentResultDelegate) -> some SwiftUI.View
+  
+  public static func getPaymentFlowUIViewController(paymentCheckoutModel: Fiserv_QR_SDK.PaymentCheckoutModel, paymentResultDelegate: any Fiserv_QR_SDK.PaymentResultDelegate) -> UIKit.UIViewController
+  public static func getQRButtonFromJson(paymentCheckoutModel: Swift.String, paymentResultDelegate: any Fiserv_QR_SDK.PaymentResultDelegate) -> (any SwiftUI.View)?
+  public static func getQRPaymentFlowScreenFromJson(paymentCheckoutModel: Swift.String, paymentResultDelegate: any Fiserv_QR_SDK.PaymentResultDelegate) -> (any SwiftUI.View)?
+  public static func getPaymentFlowUIViewController(paymentCheckoutModel: Swift.String, paymentResultDelegate: any Fiserv_QR_SDK.PaymentResultDelegate) -> UIKit.UIViewController?
+  public static func getServiceManager() -> any Fiserv_QR_SDK.PaymentServiceManager
+  public static func startServiceManager()
+  #if compiler(>=5.3) && $AsyncAwait
+  public static func getPaymentMethods() async throws -> [Fiserv_QR_SDK.ProcessedPaymentMethod]
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  public static func getPaymentMethods() async throws -> Swift.String
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  public static func filterAllowedPaymentMethods(for qrId: Swift.String, with merchantRut: Swift.String, qrScannedTime: Swift.String, issuerCodeList: [Swift.String]) async throws -> [Swift.String]
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  public static func paymentConfirm(for qrId: Swift.String, qrScannedTime: Swift.String, cardHolder: Swift.String, cardNumberM: Swift.String, cardType: Swift.String, issuerCode: Swift.String) async throws -> Fiserv_QR_SDK.PaymentResponse?
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  public static func paymentConfirm(for qrId: Swift.String, qrScannedTime: Swift.String, cardHolder: Swift.String, cardNumberM: Swift.String, cardType: Swift.String, issuerCode: Swift.String) async throws -> Swift.String
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  public static func paymentConfirm(for qrId: Swift.String, qrScannedTime: Swift.String, cardHolder: Swift.String, cardNumber: Swift.String, cardType: Swift.String, issuerCode: Swift.String, dueDate: Swift.String, cardCVV: Swift.String) async throws -> Fiserv_QR_SDK.PaymentResponse?
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  public static func paymentConfirm(for qrId: Swift.String, qrScannedTime: Swift.String, cardHolder: Swift.String, cardNumber: Swift.String, cardType: Swift.String, issuerCode: Swift.String, dueDate: Swift.String, cardCVV: Swift.String) async throws -> Swift.String
+  #endif
+  public static func decodeQRCode(_ qrCode: Swift.String) -> Fiserv_QR_SDK.EMVCoQRData
+  public static func decodeQRCode(_ qrCode: Swift.String) -> Swift.String?
+  public static func getCurrentDateTime() -> Swift.String
+  public static func formatDateTime(_ dateTime: Foundation.Date) -> Swift.String
+  @objc deinit
+}
+public struct SDKMinimumConfiguration {
+  public init(environment: Fiserv_QR_SDK.EnvironmentFlavor, apiKey: Swift.String, duType: Swift.String, duNumber: Swift.String, walletId: Swift.String, clientId: Swift.String)
+}
+public struct LocalHostConfig {
+  public init(host: Swift.String, port: Swift.Int? = nil)
+}
+@_hasMissingDesignatedInitializers public class FontManager {
+  public static var mainFont: Swift.String
+  public static var secondaryFont: Swift.String
+  public static func setMainFont(name mainFont: Swift.String)
+  public static func setSecondaryFont(name secondaryFont: Swift.String)
+  public static func registerFonts()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class ImagesResources {
+  public static func setQRIcon(_ imageName: Swift.String)
+  public static func setProcessingPaymentImage(_ imageName: Swift.String)
+  public static func configureImageSet(_ newImageSet: Fiserv_QR_SDK.ModuleDrawableResources)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class AnimationResources {
+  public static func configureAnimationSet(_ newAnimationsSet: Fiserv_QR_SDK.ModuleAnimationResources)
+  @objc deinit
+}
+public protocol PaymentServiceManager {
+  #if compiler(>=5.3) && $AsyncAwait
+  func getPaymentMethods() async throws -> [Fiserv_QR_SDK.ProcessedPaymentMethod]
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func filterAllowedPaymentMethods(for qrId: Swift.String, with merchantRut: Swift.String, qrScannedTime: Swift.String, issuerCodeList: [Swift.String]) async throws -> [Swift.String]
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func paymentConfirm(for qrId: Swift.String, qrScannedTime: Swift.String, cardHolder: Swift.String, cardNumberM: Swift.String, cardType: Swift.String, issuerCode: Swift.String) async throws -> Fiserv_QR_SDK.PaymentResponse
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  func paymentConfirm(for qrId: Swift.String, qrScannedTime: Swift.String, cardHolder: Swift.String, cardNumber: Swift.String, cardType: Swift.String, issuerCode: Swift.String, dueDate: Swift.String, cardCVV: Swift.String) async throws -> Fiserv_QR_SDK.PaymentResponse
+  #endif
+}
+public struct MerchantData : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ModuleDrawableResources {
+}
+public struct CardDrawableResources {
+}
+public struct ModuleAnimationResources {
+}
+public struct ModuleStringResources {
+}
+public struct CommonStringResources {
+}
+public struct FormatStringResources {
+}
+public struct ScannerQRScreenStringResources {
+}
+public struct ModuleSummaryScreenStringResources {
+}
+public struct ModuleEnterCVVScreenStringResources {
+}
+public struct ScannerQrScreenStringResources {
+}
+public struct ModuleLoadingPaymentScreenStringResources {
+}
+public struct ModulePaymentResultScreenStringResources {
+}
+public struct ModuleConfirmTransferScreenStringResources {
+}
+public struct ErrorStringResources {
+}
+public struct CardStringResources {
+}
+public struct PaymentFailedStringResources {
+}
+public struct PaymentCheckoutModel : Swift.Codable {
+  public init(availablePaymentMethods: [Fiserv_QR_SDK.CardCompleted]?, addProcessedCards: Swift.Bool)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+
+
+
+
+
+public protocol PaymentResultDelegate : AnyObject {
+  func onApproval(_ approvalResult: Fiserv_QR_SDK.Approval)
+  func onCancel()
+  func onError(_ errorInfo: Fiserv_QR_SDK.ErrorInfo)
+}
+
+
+public struct PaymentResponse : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class QR_Button_UIKit {
+  public static func getScanButton() -> UIKit.UIButton
+  @objc deinit
+}
+@_Concurrency.MainActor(unsafe) public struct QRPaymentFlowScreen : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s13Fiserv_QR_SDK19QRPaymentFlowScreenV4bodyQrvp", 0) __
+}
+public struct EMVCoQRData : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DomainInfo : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AcquirerInfo : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct TransactionInfo : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct CommerceInfo : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct AdditionalDataField : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct CustomFieldTemplate : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+
+
+
+extension Swift.String {
+  public func localized() -> Swift.String
+  public func localized(params: [Swift.String]) -> Swift.String
+}
+public struct WalletHolder : Swift.Codable {
+  public init(fullName: Swift.String, duNumber: Swift.String, duType: Fiserv_QR_SDK.DUType)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum DUType : Swift.String, Swift.Codable {
+  case DNI
+  case none
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct PaymentMethodsQRResponse : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension Fiserv_QR_SDK.BrandCode : Swift.Equatable {}
+extension Fiserv_QR_SDK.BrandCode : Swift.Hashable {}
+extension Fiserv_QR_SDK.BrandCode : Swift.RawRepresentable {}
+extension Fiserv_QR_SDK.EnvironmentFlavor : Swift.Equatable {}
+extension Fiserv_QR_SDK.EnvironmentFlavor : Swift.Hashable {}
+extension Fiserv_QR_SDK.DUType : Swift.Equatable {}
+extension Fiserv_QR_SDK.DUType : Swift.Hashable {}
+extension Fiserv_QR_SDK.DUType : Swift.RawRepresentable {}

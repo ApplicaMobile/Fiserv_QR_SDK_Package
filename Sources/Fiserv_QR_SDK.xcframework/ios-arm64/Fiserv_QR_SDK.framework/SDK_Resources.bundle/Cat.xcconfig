@@ -1,0 +1,14 @@
+//
+//  Dev.xcconfig
+//  Fiserv_QR_SDK
+//
+//  Created by Ariel Scarafia on 11/12/2024.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+//QA IP: 192.168.0.150
+SCHEME = https
+HOST = cat-wallet.fiservapp.com
+//PORT = 8080
+ENV_ABR = C

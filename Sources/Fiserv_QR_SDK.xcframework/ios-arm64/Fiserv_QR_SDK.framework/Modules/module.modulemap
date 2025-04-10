@@ -1,0 +1,11 @@
+framework module Fiserv_QR_SDK {
+  umbrella header "Fiserv_QR_SDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module Fiserv_QR_SDK.Swift {
+  header "Fiserv_QR_SDK-Swift.h"
+  requires objc
+}
